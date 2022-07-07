@@ -9,26 +9,45 @@ function App() {
   let [data, setData] = useState([])
   let [message, setMessage] = useState('Search for Music!')
 
+  const API_URL = 'https://itunes.apple.com/search?term='
+
   useEffect(() => {
+    
+    if(search){  
     const fetchData = async () => {
       document.title = `${search} Music`
-      const response = await fetch('https://itunes.apple.com/search?term=the%20grateful%20dead')
+      const response = await fetch(API_URL + search)
       const resData = await response.json()
       console.log(resData)
       if (resData.results.length > 0){
         setData(resData.results)
+        setMessage('')
       } else{
         setMessage('Not Found')
       }
     }
     fetchData()
+  }
   }, [search])
+
+  const handleSearch = (e, term) =>{
+    e.preventDefault()
+    setSearch(term)
+  }
+
+  const resetState = () => {
+    setSearch({})
+    setData([])
+    setMessage('Search for Music!')
+  }
 
   return (
     <div className="App">
-      <SearchBar />
+      <SearchBar handleSearch = {handleSearch}/>
       {message}
-      <Gallery />
+      <button onClick={resetState}>Reset</button>
+      <Gallery data={data}/>
+
       
     </div>
   );
