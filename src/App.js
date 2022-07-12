@@ -5,6 +5,7 @@ import SearchBar from './components/SearchBar'
 import AlbumView from './components/AlbumView';
 import ArtistView from './components/ArtistView';
 import './App.css';
+import SongView from './components/SongView';
 
 function App() {
 
@@ -58,6 +59,7 @@ function App() {
           }/>
           <Route path="/album/:id" element={<AlbumView />}/>
           <Route path="/artist/:id" element={<ArtistView />}/>
+          <Route path="/song/:id" element={<SongView />}/>
         </Routes>
       </Router>
       
