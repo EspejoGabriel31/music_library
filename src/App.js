@@ -28,11 +28,11 @@ function App() {
     setSearch(term)
   }
 
-  // const resetState = () => {
-  //   setSearch({})
-  //   setData([])
-  //   setMessage('Search for Music!')
-  // }
+  const resetState = () => {
+    setSearch({})
+    setData(null)
+    setMessage('Search for Music!')
+  }
 
   const renderGallery = () => {
     if(data){
@@ -46,23 +46,23 @@ function App() {
 
   return (
     <div className="App">
-      <SearchBar handleSearch = {handleSearch}/>
+      
       {message}
-      {renderGallery()}
-      {/* <Router>
+      
+      <Router>
         <Routes>
           <Route path="/" element={
             <Fragment>
-              <SearchBar handleSearch = {handleSearch}/> */}
-              {/* <button onClick={resetState}>Reset</button> */}
-              {/* <Gallery data={data}/> */}
-            {/* </Fragment>
+              <SearchBar handleSearch = {handleSearch}/>
+              <button onClick={resetState}>Reset</button>
+              {renderGallery()}
+            </Fragment>
           }/>
           <Route path="/album/:id" element={<AlbumView />}/>
           <Route path="/artist/:id" element={<ArtistView />}/>
           <Route path="/song/:id" element={<SongView />}/>
         </Routes>
-      </Router> */}
+      </Router> 
       
 
       
